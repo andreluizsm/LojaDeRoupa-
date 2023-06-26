@@ -50,7 +50,7 @@ void adicionarProduto(Produto *produtos, int *numProdutos) {
     printf("Produto adicionado com sucesso!\n\n");
 }
 
-
+// Função para encontrar o índice de um produto pelo nome
 int encontrarProduto(Produto *produtos, int numProdutos, const char *descricao) {
     int i;
  	for (i = 0; i < numProdutos; i++) {
@@ -58,10 +58,10 @@ int encontrarProduto(Produto *produtos, int numProdutos, const char *descricao) 
             return i;
         }
     }
-    return -1; 
+    return -1; // Retorna -1 se o produto não for encontrado
 }
 
-
+// Função para excluir um produto
 void excluirProduto(Produto *produtos, int *numProdutos) {
     char descricao[100];
     printf("Digite a descrição do produto que deseja excluir: ");
@@ -69,6 +69,7 @@ void excluirProduto(Produto *produtos, int *numProdutos) {
 
     int indice = encontrarProduto(produtos, *numProdutos, descricao);
     if (indice != -1) {
+        // Desloca os produtos seguintes para preencher a posição do produto excluído
         int i;
 		for ( i = indice; i < (*numProdutos) - 1; i++) {
             produtos[i] = produtos[i + 1];
@@ -84,7 +85,7 @@ void exibirRelatorio(Produto *produtos, int numProdutos) {
     printf("=== Relatório de Produtos ===\n");
 	
 	int i;
-    for ( i = 0; i < numProdutos; i++) {
+    for (i = 0; i < numProdutos; i++) {
         printf("Produto %d\n", i + 1);
         printf("Descrição: %s\n", produtos[i].descricao);
         printf("Peso: %.2f\n", produtos[i].peso);
@@ -96,6 +97,7 @@ void exibirRelatorio(Produto *produtos, int numProdutos) {
     }
 }
 
+// Função para alterar um produto
 void alterarProduto(Produto *produtos, int numProdutos) {
     char descricao[100];
     printf("Digite a descrição do produto que deseja alterar: ");
